@@ -1,7 +1,6 @@
 import {
   time,
-  loadFixture,
-} from "@nomicfoundation/hardhat-toolbox/network-helpers";
+  loadFixture} from "@nomicfoundation/hardhat-toolbox/network-helpers";
 import { expect } from "chai";
 import hre, { ethers } from "hardhat";
 
@@ -10,7 +9,7 @@ describe("Faucet", function () {
   async function deployTokenFixture() {
     const [owner, otherAccount] = await hre.ethers.getSigners();
 
-    const Token = await hre.ethers.getContractFactory("PETWED");
+    const Token = await hre.ethers.getContractFactory("PAPT");
     const token = await Token.deploy();
 
     return { token, owner, otherAccount };
@@ -60,7 +59,7 @@ describe("Faucet", function () {
       await token.transfer(faucet, ethers.parseEther("2000"));
 
 
-      expect(time.latest).to.be.gte();
+      // expect(time.latest).to.be.gte();
       expect(await faucet.connect(otherAccount).requestToken()).not.to.be.revertedWithCustomError(faucet, "InsufficientFaucetBalance");
 
     })

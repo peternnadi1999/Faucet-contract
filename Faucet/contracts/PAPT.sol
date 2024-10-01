@@ -3,7 +3,7 @@ pragma solidity ^0.8.27;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-contract PETWED is ERC20("PETWED Token", "PETW") {
+contract PAPT is ERC20("PAPT Token", "PAPT") {
     address public owner;
 
     constructor() {
